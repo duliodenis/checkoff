@@ -1,7 +1,7 @@
 # Checkoff
 An iOS and Android To Do List App written using [React Native](https://facebook.github.io/react-native/docs/getting-started.html).
 
-![](art/screenshot/checkoff01.gif?raw=true)
+![](art/screenshot/checkoff02.gif?raw=true)
 
 
 ### Contributing

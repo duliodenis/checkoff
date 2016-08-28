@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
+  TextInput,
   View
 } from 'react-native';
 
@@ -10,7 +11,8 @@ module.exports = React.createClass({
 
   getInitialState() {
     return({
-      tasks: ['Go shopping', 'Make dentist appointment', 'Get Car Inspection']
+      tasks: ['Go shopping', 'Make dentist appointment', 'Get Car Inspection'],
+      task: ''
     })
   },
 
@@ -31,13 +33,32 @@ module.exports = React.createClass({
   },
 
 
+  addTask() {
+    let tasks = this.state.tasks.concat([this.state.task]);
+    this.setState({tasks});
+  },
+
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.header}>
           Checkoff
         </Text>
+
+        <TextInput style={styles.input}
+        placeholder='Add your goal'
+
+        onChangeText={(text) => {
+          this.setState({task: text})
+        }}
+
+        onEndEditing={() => this.addTask()}
+
+        />
+
         {this.renderList(this.state.tasks)}
+
       </View>
     )
   }
@@ -53,9 +74,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18
   },
-  task: {
+  input: {
     height: 60,
     borderWidth: 1,
+    borderRadius: 5,
+    borderColor: 'black',
+    textAlign: 'center',
+    margin: 10
+  },
+  task: {
+    height: 60,
+    borderBottomWidth: 1,
     borderColor: 'black',
     justifyContent: 'center',
     alignItems: 'center'
